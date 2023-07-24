@@ -16,10 +16,10 @@ Exe: 21:52:31 Nov  1 1998
 
 ## Future projects
 
-hl | Server
-hw | Hardware engine
-sw | Software engine
-launcher | Launcher. Contains GUI.
+- hl | Server
+- hw | Hardware engine
+- sw | Software engine
+- launcher | Launcher. Contains GUI.
 
 ## Building
 
