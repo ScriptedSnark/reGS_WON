@@ -1,4 +1,5 @@
 # reGS
+![reGS_WONbg](https://github.com/ScriptedSnark/reGS_WON/assets/51358194/0ab64f4a-50a2-4ccc-a931-5277f2ad7e39)
 
 Reverse-engineered GoldSrc (738 build / WON). **Based on [HL SDK 1.0](https://github.com/a1batross/HLSDK_ancient)**.
 
