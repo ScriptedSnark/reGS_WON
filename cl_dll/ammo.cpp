@@ -229,7 +229,9 @@ HSPRITE_HL ghsprBuckets;					// Sprite for top row of weapons menu
 
 DECLARE_MESSAGE(m_Ammo, CurWeapon );	// Current weapon and clip
 DECLARE_MESSAGE(m_Ammo, WeaponList);	// new weapon type
+#if 0
 DECLARE_MESSAGE(m_Ammo, AmmoX);			// update known ammo type's count
+#endif
 DECLARE_MESSAGE(m_Ammo, Ammo);
 DECLARE_MESSAGE(m_Ammo, AmmoPickup);	// flashes an ammo pickup record
 DECLARE_MESSAGE(m_Ammo, WeapPickup);    // flashes a weapon pickup record
@@ -255,35 +257,6 @@ DECLARE_COMMAND(m_Ammo, PrevWeapon);
 #define AMMO_LARGE_WIDTH 20
 
 #define HISTORY_DRAW_TIME	"5"
-
-// TODO: reverse-engineer it - ScriptedSnark
-
-//int __stdcall sub_10003F40(char* Str, int a2, int a3)
-//{
-//	char* v3; // edx
-//	int v5; // esi
-//
-//	v3 = strstr(Str, "Ammo");
-//	if (!v3)
-//		return 0;
-//	v5 = atoi(&v3[strlen("Ammo")]);
-//	sub_10001000(a3, a2);
-//	dword_1001BD40[v5] = abs32(sub_10001070());
-//	return 1;
-//}
-
-int CHudAmmo::MsgFunc_Ammo(const char* pszName, int iSize, void* pbuf)
-{
-	BEGIN_READ(pbuf, iSize);
-	
-#ifdef _DEBUG
-	char buffer[256];
-	sprintf(buffer, "CHudAmmo::UnknownAmmoFunc - %i\n", READ_CHAR()); // wanted to check it, seems like these messages are usable - ScriptedSnark
-	gEngfuncs.pfnConsolePrint(buffer);
-#endif
-
-	return 1;
-}
 
 int CHudAmmo::Init(void)
 {
@@ -511,6 +484,7 @@ void WeaponsResource :: SelectSlot( int iSlot, int fAdvance, int iDirection )
 // AmmoX  -- Update the count of a known type of ammo
 // Doesn't work in 738 build - ScriptedSnark 
 //
+#if 0
 int CHudAmmo::MsgFunc_AmmoX(const char *pszName, int iSize, void *pbuf)
 {
 	BEGIN_READ( pbuf, iSize );
@@ -519,6 +493,34 @@ int CHudAmmo::MsgFunc_AmmoX(const char *pszName, int iSize, void *pbuf)
 	int iCount = READ_BYTE();
 
 	gWR.SetAmmo( iIndex, fabs(iCount) );
+
+	return 1;
+}
+#endif
+
+//
+// Ammo -- Update the count of a known type of ammo
+// Reverse-engineered.
+//
+int CHudAmmo::MsgFunc_Ammo(const char* pszName, int iSize, void* pbuf)
+{
+	BEGIN_READ(pbuf, iSize);
+
+	const char* szAmmo = strstr(pszName, "Ammo");
+
+	if (!szAmmo)
+		return 0;
+
+	int iIndex = atoi(szAmmo + strlen("Ammo"));
+	int iCount = READ_CHAR();
+
+	gWR.SetAmmo(iIndex, fabs(iCount));
+
+#ifdef _DEBUG
+	char buffer[256];
+	sprintf(buffer, "[reGS_738] CHudAmmo::MsgFunc_Ammo - %i\n", iCount); // wanted to check it, seems like these messages are usable - ScriptedSnark
+	gEngfuncs.pfnConsolePrint(buffer);
+#endif
 
 	return 1;
 }

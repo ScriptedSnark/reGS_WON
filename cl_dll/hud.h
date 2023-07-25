@@ -92,7 +92,9 @@ public:
 	int DrawWList(float flTime);
 	int MsgFunc_CurWeapon(const char *pszName, int iSize, void *pbuf);
 	int MsgFunc_WeaponList(const char *pszName, int iSize, void *pbuf);
+#if 0
 	int MsgFunc_AmmoX(const char *pszName, int iSize, void *pbuf);
+#endif
 	int MsgFunc_Ammo(const char* pszName, int iSize, void* pbuf);
 	int MsgFunc_AmmoPickup( const char *pszName, int iSize, void *pbuf );
 	int MsgFunc_WeapPickup( const char *pszName, int iSize, void *pbuf );
