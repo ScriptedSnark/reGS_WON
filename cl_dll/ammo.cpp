@@ -230,6 +230,7 @@ HSPRITE_HL ghsprBuckets;					// Sprite for top row of weapons menu
 DECLARE_MESSAGE(m_Ammo, CurWeapon );	// Current weapon and clip
 DECLARE_MESSAGE(m_Ammo, WeaponList);	// new weapon type
 DECLARE_MESSAGE(m_Ammo, AmmoX);			// update known ammo type's count
+DECLARE_MESSAGE(m_Ammo, Ammo);
 DECLARE_MESSAGE(m_Ammo, AmmoPickup);	// flashes an ammo pickup record
 DECLARE_MESSAGE(m_Ammo, WeapPickup);    // flashes a weapon pickup record
 DECLARE_MESSAGE(m_Ammo, HideWeapon);	// hides the weapon, ammo, and crosshair displays temporarily
@@ -255,8 +256,39 @@ DECLARE_COMMAND(m_Ammo, PrevWeapon);
 
 #define HISTORY_DRAW_TIME	"5"
 
+// TODO: reverse-engineer it - ScriptedSnark
+
+//int __stdcall sub_10003F40(char* Str, int a2, int a3)
+//{
+//	char* v3; // edx
+//	int v5; // esi
+//
+//	v3 = strstr(Str, "Ammo");
+//	if (!v3)
+//		return 0;
+//	v5 = atoi(&v3[strlen("Ammo")]);
+//	sub_10001000(a3, a2);
+//	dword_1001BD40[v5] = abs32(sub_10001070());
+//	return 1;
+//}
+
+int CHudAmmo::MsgFunc_Ammo(const char* pszName, int iSize, void* pbuf)
+{
+	BEGIN_READ(pbuf, iSize);
+	
+#ifdef _DEBUG
+	char buffer[256];
+	sprintf(buffer, "CHudAmmo::UnknownAmmoFunc - %i\n", READ_CHAR()); // wanted to check it, seems like these messages are usable - ScriptedSnark
+	gEngfuncs.pfnConsolePrint(buffer);
+#endif
+
+	return 1;
+}
+
 int CHudAmmo::Init(void)
 {
+	char Buffer[32];
+
 	gHUD.AddHudElem(this);
 
 	HOOK_MESSAGE(CurWeapon);
@@ -265,7 +297,13 @@ int CHudAmmo::Init(void)
 	HOOK_MESSAGE(WeapPickup);
 	HOOK_MESSAGE(ItemPickup);
 	HOOK_MESSAGE(HideWeapon);
-	HOOK_MESSAGE(AmmoX);
+	//HOOK_MESSAGE(AmmoX); // doesn't exist in 738 build - ScriptedSnark
+
+	for (int i = 0; i < 14; i++) // 14.. magic number
+	{
+		sprintf(Buffer, "Ammo%d", i);
+		gEngfuncs.pfnHookUserMsg(Buffer, __MsgFunc_Ammo);
+	}
 
 	HOOK_COMMAND("slot1", Slot1);
 	HOOK_COMMAND("slot2", Slot2);
@@ -471,7 +509,8 @@ void WeaponsResource :: SelectSlot( int iSlot, int fAdvance, int iDirection )
 
 //
 // AmmoX  -- Update the count of a known type of ammo
-// 
+// Doesn't work in 738 build - ScriptedSnark 
+//
 int CHudAmmo::MsgFunc_AmmoX(const char *pszName, int iSize, void *pbuf)
 {
 	BEGIN_READ( pbuf, iSize );
