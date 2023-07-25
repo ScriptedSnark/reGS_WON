@@ -43,4 +43,23 @@
 
 #define WEAPON_SUIT			31
 
+/*
+#define WEAPON_CROWBAR          0
+#define WEAPON_GLOCK            1
+#define WEAPON_PYTHON           2
+#define WEAPON_MP5              3
+#define WEAPON_CHAINGUN         4
+#define WEAPON_CROSSBOW         5
+#define WEAPON_SHOTGUN          6
+#define WEAPON_RPG              7
+#define WEAPON_GAUSS            8
+#define WEAPON_EGON             9
+#define WEAPON_HORNETGUN        10
+#define WEAPON_HANDGRENADE      11
+#define WEAPON_TRIPMINE         12
+#define WEAPON_SATCHEL          13
+#define WEAPON_SNARK            14
+*/
+#define REGISTERED_WEAPONS  14 // counting from zero (without WEAPON_NONE)
+
 #endif

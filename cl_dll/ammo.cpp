@@ -272,7 +272,7 @@ int CHudAmmo::Init(void)
 	HOOK_MESSAGE(HideWeapon);
 	//HOOK_MESSAGE(AmmoX); // doesn't exist in 738 build - ScriptedSnark
 
-	for (int i = 0; i < 14; i++) // 14.. magic number
+	for (int i = 0; i < REGISTERED_WEAPONS; i++) 
 	{
 		sprintf(Buffer, "Ammo%d", i);
 		gEngfuncs.pfnHookUserMsg(Buffer, __MsgFunc_Ammo);
