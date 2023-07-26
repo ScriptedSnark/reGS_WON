@@ -60,7 +60,7 @@ int CHudBattery:: MsgFunc_Battery(const char *pszName,  int iSize, void *pbuf )
 
 	
 	BEGIN_READ( pbuf, iSize );
-	int x = READ_SHORT();
+	int x = READ_BYTE();
 
 	if (x != m_iBat)
 	{
