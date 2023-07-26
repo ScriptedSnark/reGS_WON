@@ -13,7 +13,7 @@ Build 738
 Exe: 21:52:31 Nov  1 1998
 </pre>
 
-- cl_dll (client.dll) | Status: WIP (at this moment it's compatible but has some bugs and inconsistencies)
+- cl_dll (client.dll) | Status: Finished (seems like it's finished but I think some inconsistencies exist)
 
 ## Future projects
 
