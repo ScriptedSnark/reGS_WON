@@ -394,6 +394,7 @@ int CHudScoreboard :: MsgFunc_ScoreInfo( const char *pszName, int iSize, void *p
 
 	BEGIN_READ( pbuf, iSize );
 	short cl = READ_BYTE();
+	short unknown = READ_BYTE(); // TODO: rename and use it - ScriptedSnark
 	short frags = READ_SHORT();
 	short deaths = READ_SHORT();
 
