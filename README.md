@@ -14,11 +14,11 @@ Exe: 21:52:31 Nov  1 1998
 </pre>
 
 - cl_dll (client.dll) | Status: Finished (seems like it's finished but I think some inconsistencies exist)
+- hw (hw.dll) | Status: WIP (doing researches)
 
 ## Future projects
 
 - hl | Server
-- hw | Hardware engine
 - sw | Software engine
 - launcher | Launcher. Contains GUI.
 
