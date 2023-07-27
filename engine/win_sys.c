@@ -13,8 +13,8 @@
 *
 ****/
 
-#include "quakedef.h"
 #include "winquake.h"
+#include "quakedef.h"
 
 // Stub functions which are necessary for loading engine inside hl.exe - ScriptedSnark
 // Of course, these funcs will be in their files in the future and will have correct types and arguments.
