@@ -60,12 +60,24 @@
     <ClInclude Include="winquake.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_sys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\utils\common\mathlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="win_sys.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

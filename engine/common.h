@@ -17,14 +17,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
-// winquake.h: Win32-specific Quake header file
+// comndef.h  -- general definitions
 
-#include <windows.h>
-#define WM_MOUSEWHEEL                   0x020A
+#define	MAX_OSPATH		128			// max length of a filesystem pathname
 
-#include <ddraw.h>
-#include <dsound.h>
+extern	char	com_gamedir[MAX_OSPATH];
 
-#define EXPORT __declspec(dllexport)
-
-#include "win_sys.h"
+char* va(char* format, ...);

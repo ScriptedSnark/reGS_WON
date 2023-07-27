@@ -17,14 +17,30 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
-// winquake.h: Win32-specific Quake header file
+// common.c -- misc functions used in client and server
 
-#include <windows.h>
-#define WM_MOUSEWHEEL                   0x020A
+#include "quakedef.h"
+#include "winquake.h"
 
-#include <ddraw.h>
-#include <dsound.h>
+char com_gamedir[MAX_OSPATH];
 
-#define EXPORT __declspec(dllexport)
+/*
+============
+va
 
-#include "win_sys.h"
+does a varargs printf into a temp buffer, so I don't need to have
+varargs versions of all text functions.
+FIXME: make this buffer size safe someday
+============
+*/
+char* va(char* format, ...)
+{
+	va_list argptr;
+	static char string[1024];
+
+	va_start(argptr, format);
+	vsprintf(string, format, argptr);
+	va_end(argptr);
+
+	return string;
+}

@@ -135,10 +135,6 @@ int EXPORT ClientDLL_HudVidInit() {
     return 1;
 }
 
-int EXPORT Con_Printf() {
-    return 1;
-}
-
 int EXPORT Con_SafePrintf() {
     return 1;
 }
@@ -295,6 +291,20 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     freopen_s(&out, "conout$", "w+", stdout);
 
     return TRUE;
+}
+
+/*
+================
+Sys_Printf
+================
+*/
+void Sys_Printf(char* fmt, ...)
+{
+    va_list	argptr;
+
+    va_start(argptr, fmt);
+    vprintf(fmt, argptr);
+    va_end(argptr);
 }
 
 // WARNING! Hypothetical variable names and types! - ScriptedSnark
