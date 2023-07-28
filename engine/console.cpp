@@ -15,6 +15,11 @@
 
 #include "quakedef.h"
 #include "winquake.h"
+#include "console.h"
+
+#ifdef REGS_HOOKED
+_Con_Printf ORIG_Con_Printf = NULL;
+#endif
 
 #define MAXPRINTMSG 4096
 qboolean con_debuglog;
@@ -56,7 +61,11 @@ void Con_DebugLog(char* file, char* fmt, ...)
 Con_Printf
 ================
 */
+#ifndef REGS_HOOKED
 void EXPORT Con_Printf(char* fmt, ...)
+#else
+void Con_Printf(char* fmt, ...)
+#endif
 {
     va_list	argptr;
     char msg[MAXPRINTMSG];
@@ -69,4 +78,8 @@ void EXPORT Con_Printf(char* fmt, ...)
 
     if (con_debuglog)
         Con_DebugLog(va("%s/qconsole.log", com_gamedir), "%s", msg);
+
+#ifdef REGS_HOOKED
+    ORIG_Con_Printf("%s", msg);
+#endif
 }

@@ -19,247 +19,247 @@
 // Stub functions which are necessary for loading engine inside hl.exe - ScriptedSnark
 // Of course, these funcs will be in their files in the future and will have correct types and arguments.
 
-int EXPORT LoadGame() {
+extern "C" int EXPORT LoadGame() {
     return 1;
 }
 
-int EXPORT SaveGame() {
+extern "C" int EXPORT SaveGame() {
     return 1;
 }
 
-int EXPORT GameSetState() {
+extern "C" int EXPORT GameSetState() {
     return 1;
 }
 
-int EXPORT GameSetBackground() {
+extern "C" int EXPORT GameSetBackground() {
     return 1;
 }
 
-int EXPORT GameSetSubState() {
+extern "C" int EXPORT GameSetSubState() {
     return 1;
 }
 
-int EXPORT Host_Frame() {
+extern "C" int EXPORT Host_Frame() {
     return 1;
 }
 
-int EXPORT Host_Shutdown() {
+extern "C" int EXPORT Host_Shutdown() {
     return 1;
 }
 
-int EXPORT Key_Event() {
+extern "C" int EXPORT Key_Event() {
     return 1;
 }
 
-int EXPORT Key_ClearStates() {
+extern "C" int EXPORT Key_ClearStates() {
     return 1;
 }
 
-int EXPORT Sys_FloatTime() {
+extern "C" int EXPORT Sys_FloatTime() {
     return 1;
 }
 
-int EXPORT IN_ClearStates() {
+extern "C" int EXPORT IN_ClearStates() {
     return 1;
 }
 
-int EXPORT IN_MouseEvent() {
+extern "C" int EXPORT IN_MouseEvent() {
     return 1;
 }
 
-int EXPORT IN_HideMouse() {
+extern "C" int EXPORT IN_HideMouse() {
     return 1;
 }
 
-int EXPORT IN_ActivateMouse() {
+extern "C" int EXPORT IN_ActivateMouse() {
     return 1;
 }
 
-int EXPORT IN_ShowMouse() {
+extern "C" int EXPORT IN_ShowMouse() {
     return 1;
 }
 
-int EXPORT IN_DeactivateMouse() {
+extern "C" int EXPORT IN_DeactivateMouse() {
     return 1;
 }
 
-int EXPORT IN_UpdateClipCursor() {
+extern "C" int EXPORT IN_UpdateClipCursor() {
     return 1;
 }
 
-int EXPORT IN_RestoreOriginalMouseState() {
+extern "C" int EXPORT IN_RestoreOriginalMouseState() {
     return 1;
 }
 
-int EXPORT IN_SetQuakeMouseState() {
+extern "C" int EXPORT IN_SetQuakeMouseState() {
     return 1;
 }
 
-int EXPORT Snd_AcquireBuffer() {
+extern "C" int EXPORT Snd_AcquireBuffer() {
     return 1;
 }
 
-int EXPORT Snd_ReleaseBuffer() {
+extern "C" int EXPORT Snd_ReleaseBuffer() {
     return 1;
 }
 
-int EXPORT S_UnblockSound() {
+extern "C" int EXPORT S_UnblockSound() {
     return 1;
 }
 
-int EXPORT S_BlockSound() {
+extern "C" int EXPORT S_BlockSound() {
     return 1;
 }
 
-int EXPORT S_ClearBuffer() {
+extern "C" int EXPORT S_ClearBuffer() {
     return 1;
 }
 
-int EXPORT SNDDMA_Shutdown() {
+extern "C" int EXPORT SNDDMA_Shutdown() {
     return 1;
 }
 
-int EXPORT S_GetWAVPointer() {
+extern "C" int EXPORT S_GetWAVPointer() {
     return 1;
 }
 
-int EXPORT S_GetDSPointer() {
+extern "C" int EXPORT S_GetDSPointer() {
     return 1;
 }
 
-int EXPORT DeinitConProc() {
+extern "C" int EXPORT DeinitConProc() {
     return 1;
 }
 
-int EXPORT ClientDLL_HudVidInit() {
+extern "C" int EXPORT ClientDLL_HudVidInit() {
     return 1;
 }
 
-int EXPORT Con_SafePrintf() {
+extern "C" int EXPORT Con_SafePrintf() {
     return 1;
 }
 
-int EXPORT D_InitCaches() {
+extern "C" int EXPORT D_InitCaches() {
     return 1;
 }
 
-int EXPORT VID_AllocBuffers() {
+extern "C" int EXPORT VID_AllocBuffers() {
     return 1;
 }
 
-int EXPORT VID_UpdateVID() {
+extern "C" int EXPORT VID_UpdateVID() {
     return 1;
 }
 
-int EXPORT VID_UpdateWindowVars() {
+extern "C" int EXPORT VID_UpdateWindowVars() {
     return 1;
 }
 
-int EXPORT Cvar_Set() {
+extern "C" int EXPORT Cvar_Set() {
     return 1;
 }
 
-int EXPORT Cvar_SetValue() {
+extern "C" int EXPORT Cvar_SetValue() {
     return 1;
 }
 
-int EXPORT Cvar_VariableValue() {
+extern "C" int EXPORT Cvar_VariableValue() {
     return 1;
 }
 
-int EXPORT Cvar_VariableInt() {
+extern "C" int EXPORT Cvar_VariableInt() {
     return 1;
 }
 
-int EXPORT Cvar_VariableString() {
+extern "C" int EXPORT Cvar_VariableString() {
     return 1;
 }
 
-int EXPORT Cvar_CompleteVariable() {
+extern "C" int EXPORT Cvar_CompleteVariable() {
     return 1;
 }
 
-int EXPORT COM_CheckParmEx() {
+extern "C" int EXPORT COM_CheckParmEx() {
     return 1;
 }
 
-int EXPORT GetEngineState() {
+extern "C" int EXPORT GetEngineState() {
     return 1;
 }
 
-int EXPORT Cbuf_AddText() {
+extern "C" int EXPORT Cbuf_AddText() {
     return 1;
 }
 
-int EXPORT Cbuf_InsertText() {
+extern "C" int EXPORT Cbuf_InsertText() {
     return 1;
 }
 
-int EXPORT Cmd_AddCommand() {
+extern "C" int EXPORT Cmd_AddCommand() {
     return 1;
 }
 
-int EXPORT Cmd_Argc() {
+extern "C" int EXPORT Cmd_Argc() {
     return 1;
 }
 
-int EXPORT Cmd_Argv() {
+extern "C" int EXPORT Cmd_Argv() {
     return 1;
 }
 
-int EXPORT Cmd_Args() {
+extern "C" int EXPORT Cmd_Args() {
     return 1;
 }
 
-int EXPORT qwglSwapBuffers() {
+extern "C" int EXPORT qwglSwapBuffers() {
     return 1;
 }
 
-int EXPORT GL_Init() {
+extern "C" int EXPORT GL_Init() {
     return 1;
 }
 
-int EXPORT GL_SetMode() {
+extern "C" int EXPORT GL_SetMode() {
     return 1;
 }
 
-int EXPORT GL_Shutdown() {
+extern "C" int EXPORT GL_Shutdown() {
     return 1;
 }
 
-int EXPORT GetGameInfo() {
+extern "C" int EXPORT GetGameInfo() {
     return 1;
 }
 
-int EXPORT QGL_D3DShared() {
+extern "C" int EXPORT QGL_D3DShared() {
     return 1;
 }
 
-int EXPORT ForceReloadProfile() {
+extern "C" int EXPORT ForceReloadProfile() {
     return 1;
 }
 
-int EXPORT SetStartupMode() {
+extern "C" int EXPORT SetStartupMode() {
     return 1;
 }
 
-int EXPORT SetPauseState() {
+extern "C" int EXPORT SetPauseState() {
     return 1;
 }
 
-int EXPORT GetPauseState() {
+extern "C" int EXPORT GetPauseState() {
     return 1;
 }
 
-int EXPORT Keyboard_ReturnToGame() {
+extern "C" int EXPORT Keyboard_ReturnToGame() {
     return 1;
 }
 
-int EXPORT SetMessagePumpDisableMode() {
+extern "C" int EXPORT SetMessagePumpDisableMode() {
     return 1;
 }
 
-int EXPORT StoreProfile() {
+extern "C" int EXPORT StoreProfile() {
     return 1;
 }
 

@@ -66,18 +66,27 @@
     <ClInclude Include="win_sys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buildnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\utils\common\mathlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="win_sys.c">
+    <ClCompile Include="win_sys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="console.c">
+    <ClCompile Include="console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="common.c">
+    <ClCompile Include="common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="buildnum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

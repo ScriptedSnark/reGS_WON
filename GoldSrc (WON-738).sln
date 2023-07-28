@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cl_dll", "cl_dll\cl_dll.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw", "engine\hw.vcxproj", "{4F0BCBD4-81B6-435C-B477-C1A60A8A2058}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw_hooked", "hw_hooked\hw_hooked.vcxproj", "{57CADFC1-E8F4-4432-9915-17FD9905FDC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -21,6 +23,10 @@ Global
 		{4F0BCBD4-81B6-435C-B477-C1A60A8A2058}.Debug|x86.Build.0 = Debug|Win32
 		{4F0BCBD4-81B6-435C-B477-C1A60A8A2058}.Release|x86.ActiveCfg = Release|Win32
 		{4F0BCBD4-81B6-435C-B477-C1A60A8A2058}.Release|x86.Build.0 = Release|Win32
+		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Debug|x86.ActiveCfg = Debug|Win32
+		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Debug|x86.Build.0 = Debug|Win32
+		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Release|x86.ActiveCfg = Release|Win32
+		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

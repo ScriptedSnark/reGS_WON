@@ -47,6 +47,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "const.h"
 #include "cvardef.h"
 #include "common.h"
+#include "buildnum.h"
 
 /**
  *	the host system specifies the base of the directory tree, the
