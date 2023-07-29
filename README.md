@@ -15,6 +15,7 @@ Exe: 21:52:31 Nov  1 1998
 
 - cl_dll (client.dll) | Status: Finished (seems like it's finished but I think some inconsistencies exist)
 - hw (hw.dll) | Status: WIP (doing researches)
+- hw_hooked (hl_res.dll) | Loader for engine hooks
 
 ## Future projects
 
