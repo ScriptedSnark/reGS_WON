@@ -66,6 +66,8 @@ Sys_Printf
 */
 void Sys_Printf(char* fmt, ...)
 {
+    return;
+
     va_list	argptr;
     char msg[4096];
 
