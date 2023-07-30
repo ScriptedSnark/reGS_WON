@@ -20,7 +20,6 @@
 #include <iostream>
 #include "patterns.hpp"
 #include <functional>
-#include "DetoursUtils.hpp"
 #pragma comment(lib, "psapi.lib")
 
 namespace MemUtils
@@ -320,51 +319,6 @@ auto find_function_async(
 			return it; });
 }
 
-template <typename T>
-struct identity
-{
-	typedef T type;
-};
-
-namespace detail
-{
-inline void Intercept(const std::wstring& moduleName, size_t n, const std::pair<void**, void*> funcPairs[]);
-
-
-inline void Intercept(const std::wstring& moduleName, size_t n, const std::pair<void**, void*> funcPairs[])
-{
-	DetoursUtils::AttachDetours(moduleName, n, funcPairs);
-}
-
-template <typename FuncType, size_t N>
-inline void Intercept(const std::wstring& moduleName, std::array<std::pair<void**, void*>, N>& funcPairs, FuncType& target, typename identity<FuncType>::type detour)
-{
-	funcPairs[N - 1] = {reinterpret_cast<void**>(&target), reinterpret_cast<void*>(detour)};
-	Intercept(moduleName, N, funcPairs.data());
-}
-
-template <typename FuncType, size_t N, typename... Rest>
-inline void Intercept(const std::wstring& moduleName, std::array<std::pair<void**, void*>, N>& funcPairs, FuncType& target, typename identity<FuncType>::type detour, Rest&... rest)
-{
-	funcPairs[N - (sizeof...(rest) / 2 + 1)] = {reinterpret_cast<void**>(&target), reinterpret_cast<void*>(detour)};
-	Intercept(moduleName, funcPairs, rest...);
-}
-}
-
-template <typename FuncType>
-inline void Intercept(const std::wstring& moduleName, FuncType& target, typename identity<FuncType>::type detour)
-{
-	const std::pair<void**, void*> temp[] = {{reinterpret_cast<void**>(&target), reinterpret_cast<void*>(detour)}};
-	detail::Intercept(moduleName, 1, temp);
-}
-
-template <typename FuncType, typename... Rest>
-inline void Intercept(const std::wstring& moduleName, FuncType& target, typename identity<FuncType>::type detour, Rest&... rest)
-{
-	std::array<std::pair<void**, void*>, sizeof...(rest) / 2 + 1> funcPairs;
-	funcPairs[0] = {reinterpret_cast<void**>(&target), reinterpret_cast<void*>(detour)};
-	detail::Intercept(moduleName, funcPairs, rest...);
-}
 }
 
 #endif //MEMUTILS_H_GUARD

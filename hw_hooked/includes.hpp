@@ -24,12 +24,13 @@
 #include "Utils.hpp"
 #include "gs738_patterns.hpp"
 
-//MinHook
-#include "MinHook.h"
+//FuncHook
+#include "funchook.h"
 
 //HLSDK
 #include "quakedef.h"
 #include "console.h"
+#include "gl_draw.h"
 
 //OpenGL
 #include <gl/GL.h>
@@ -39,31 +40,33 @@
 
 extern void* g_lpHwDLL;
 
-#define Find(future_name)                                                                                                                  \
+#define Find(lib, future_name)                                                                                                                  \
 	{                                                                                                                                      \
-		auto f##future_name = utils.FindAsync(ORIG_##future_name, patterns::engine::future_name);                                          \
+		auto f##future_name = utils.FindAsync(ORIG_##future_name, patterns::##lib::future_name);                                          \
 		auto pattern = f##future_name.get();                                                                                               \
 		if (ORIG_##future_name)                                                                                                            \
 		{                                                                                                                                  \
-			PrintCalm("[hw dll] Found " #future_name " at %p (using the %s pattern).\n", ORIG_##future_name, pattern->name()); \
+			PrintCalm("["#lib"] Found " #future_name " at %p (using the %s pattern).\n", ORIG_##future_name, pattern->name()); \
 		}                                                                                                                                  \
 		else																														       \
 		{																																   \
-			PrintWarning("[hw dll] Could not find " #future_name "!\n");								   \
+			PrintWarning("["#lib"] Could not find " #future_name "!\n");								   \
 		}																																   \
 	}
 
-#define FindbySymbol(func_name) \
+#define FindbySymbol(lib, func_name) \
 	if ((ORIG_##func_name = reinterpret_cast<_##func_name>(GetProcAddress(reinterpret_cast<HMODULE>(g_lpHwDLL), "" #func_name "")))) \
-		PrintCalm("[hw dll] Found " #func_name " at %p.\n", ORIG_##func_name); \
+		PrintCalm("["#lib"] Found " #func_name " at %p.\n", ORIG_##func_name); \
 	else \
-		PrintWarning("[hw dll] Could not find " #func_name ".\n"); \
+		PrintWarning("["#lib"] Could not find " #func_name ".\n"); \
 
-#define CreateHook(func_name) \
-	status = MH_CreateHook(ORIG_##func_name, ##func_name, reinterpret_cast<void**>(&ORIG_##func_name)); \
-	if (status != MH_OK) { \
-		PrintWarning("[hw dll] Couldn't create hook for " #func_name ": %s\n", MH_StatusToString(status)); \
-	}
+#define CreateHook(lib, func_name) \
+	PrintMessage("["#lib"] Creating hook for " #func_name "...\n"); \
+	status = funchook_prepare(g_lpFuncHook_##lib, (void**)&ORIG_##func_name, ##func_name);                 \
+	if (status == FUNCHOOK_ERROR_SUCCESS) \
+		PrintCalm("["#lib"] Hooked "#func_name"!\n"); \
+	else \
+		PrintWarning("["#lib"] Failed to hook "#func_name"! Code: %i\n", status); \
 
 #pragma comment(lib, "opengl32.lib")
 

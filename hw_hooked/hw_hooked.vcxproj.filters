@@ -12,9 +12,6 @@
     <Filter Include="Hooking">
       <UniqueIdentifier>{28b2505b-abfb-4090-9c1e-03d8615aa807}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hooking\MinHook">
-      <UniqueIdentifier>{4e7b73b3-5bbf-434f-ba41-7c6b2d1ee829}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Hooking\SPTLib">
       <UniqueIdentifier>{c7c6d421-db88-4849-b707-e4a735364251}</UniqueIdentifier>
     </Filter>
@@ -23,24 +20,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\external\minhook\buffer.c">
-      <Filter>Hooking\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\minhook\hook.c">
-      <Filter>Hooking\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\minhook\trampoline.c">
-      <Filter>Hooking\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\minhook\hde\hde32.c">
-      <Filter>Hooking\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\minhook\hde\hde64.c">
-      <Filter>Hooking\MinHook</Filter>
-    </ClCompile>
-    <ClCompile Include="..\external\sptlib\DetoursUtils.cpp">
-      <Filter>Hooking\SPTLib</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -56,35 +35,11 @@
     <ClCompile Include="conutils.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="gl_draw.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\external\minhook\buffer.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\MinHook.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\trampoline.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\hde\hde32.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\hde\hde64.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\hde\pstdint.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\hde\table32.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\minhook\hde\table64.h">
-      <Filter>Hooking\MinHook</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\sptlib\DetoursUtils.hpp">
-      <Filter>Hooking\SPTLib</Filter>
-    </ClInclude>
     <ClInclude Include="..\external\sptlib\MemUtils.h">
       <Filter>Hooking\SPTLib</Filter>
     </ClInclude>
@@ -110,6 +65,9 @@
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="conutils.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="gl_draw.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
