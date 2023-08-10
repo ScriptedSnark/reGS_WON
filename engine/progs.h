@@ -77,10 +77,13 @@ typedef struct edict_s
 	short		leafnums[MAX_ENT_LEAFS];
 
 	entity_state_t	baseline;
-	
+	//2023-08: TODO: entity_state_t is 4 byte short compared to build 893 (OldSourceCode)
+
 	float		freetime;			// sv.time when the object was freed
 
-	void*		pvPrivateData;		// Alloced and freed by engine, used by DLLs
+	void*		pvPrivateData;		// Alloced and freed by engine, used by DLLs 
+	//2023-08: TODO: pvPrivateData is supposed to be at offset 0xd4 due to the 4 bytes of baseline, but it will crash the game
+	//while leaving it unchanged will affect reading of classname in entvars_t at DispatchKeyValue
 
 	entvars_t	v;					// C exported fields from progs
 // other fields from progs come immediately after
