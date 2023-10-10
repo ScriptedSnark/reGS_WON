@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw", "engine\hw.vcxproj", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw_hooked", "hw_hooked\hw_hooked.vcxproj", "{57CADFC1-E8F4-4432-9915-17FD9905FDC6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "launcher", "launcher\launcher.vcxproj", "{BD53FB71-6FAC-4AFD-AB52-667052EE93AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,6 +29,10 @@ Global
 		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Debug|x86.Build.0 = Debug|Win32
 		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Release|x86.ActiveCfg = Release|Win32
 		{57CADFC1-E8F4-4432-9915-17FD9905FDC6}.Release|x86.Build.0 = Release|Win32
+		{BD53FB71-6FAC-4AFD-AB52-667052EE93AD}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD53FB71-6FAC-4AFD-AB52-667052EE93AD}.Debug|x86.Build.0 = Debug|Win32
+		{BD53FB71-6FAC-4AFD-AB52-667052EE93AD}.Release|x86.ActiveCfg = Release|Win32
+		{BD53FB71-6FAC-4AFD-AB52-667052EE93AD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

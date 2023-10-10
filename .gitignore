@@ -367,3 +367,5 @@ cl_dll/Release/
 cl_dll/Debug/
 engine/GLRelease/
 engine/GLDebug/
+launcher/Release/
+launcher/Debug/
