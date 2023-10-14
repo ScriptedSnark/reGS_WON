@@ -1,5 +1,5 @@
 /*
-*	hl.exe (build 738) 
+*	hl.exe (build 738)
 *   Kind of clean room reimplementation
 *	sys_launcher.cpp: entry point
 */
@@ -66,16 +66,16 @@ _StoreProfile StoreProfile = NULL;
 
 qboolean Eng_LoadFunctions()
 {
-	// load engine
-	HMODULE engine = ::LoadLibrary("hw"); // TODO: load specific library by parsing registry (sw/hw)
+    // load engine
+    HMODULE engine = ::LoadLibrary("hw"); // TODO: load specific library by parsing registry (sw/hw)
 
-	if (!engine)
-	{
-		printf("Eng_LoadFunctions: couldn't load engine.\n");
+    if (!engine)
+    {
+        printf("Eng_LoadFunctions: couldn't load engine.\n");
         return FALSE;
-	}
+    }
 
-	// import funcs
+    // import funcs
     GameInit = (_GameInit)GetProcAddress(engine, "GameInit");
     GameSetState = (_GameSetState)GetProcAddress(engine, "GameSetState");
     GameSetBackground = (_GameSetBackground)GetProcAddress(engine, "GameSetBackground");
@@ -151,7 +151,7 @@ qboolean Eng_LoadFunctions()
     SetMessagePumpDisableMode = (_SetMessagePumpDisableMode)GetProcAddress(engine, "SetMessagePumpDisableMode");
     StoreProfile = (_StoreProfile)GetProcAddress(engine, "StoreProfile");
 
-	return TRUE;
+    return TRUE;
 }
 
 int Eng_Frame()
@@ -160,11 +160,11 @@ int Eng_Frame()
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	// load GoldSrc engine
-	if (!Eng_LoadFunctions())
-		return 1;
+    // load GoldSrc engine
+    if (!Eng_LoadFunctions())
+        return 1;
 
-	// load GUI
+    // load GUI
 
-	return 0;
+    return 0;
 }
