@@ -12,17 +12,15 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+// 2023-08: v1.0.0.5/b738 compatibility
+
 #ifndef EIFACE_H
 #define EIFACE_H
 
-#ifdef HLDEMO_BUILD
-#define INTERFACE_VERSION       001
-#else  // !HLDEMO_BUILD, i.e., regular version of HL
-#define INTERFACE_VERSION		138
-#endif // !HLDEMO_BUILD
+#define INTERFACE_VERSION		129
 
 #include "custom.h"
-
 #include "cvardef.h"
 //
 // Defines entity interface between engine and DLLs.
@@ -129,7 +127,7 @@ typedef struct enginefuncs_s
 	void		(*pfnTraceSphere)			(const float *v1, const float *v2, int fNoMonsters, float radius, edict_t *pentToSkip, TraceResult *ptr);
 	void		(*pfnGetAimVector)			(edict_t* ent, float speed, float *rgflReturn);
 	void		(*pfnServerCommand)			(char* str);
-	void		(*pfnServerExecute)			(void);
+	//void		(*pfnServerExecute)			(void); UNIMPLEMENTED FOR BUILD 738
 	void		(*pfnClientCommand)			(edict_t* pEdict, char* szFmt, ...);
 	void		(*pfnParticleEffect)		(const float *org, const float *dir, float color, float count);
 	void		(*pfnLightStyle)			(int style, char* val);
@@ -145,7 +143,7 @@ typedef struct enginefuncs_s
 	void		(*pfnWriteCoord)			(float flValue);
 	void		(*pfnWriteString)			(const char *sz);
 	void		(*pfnWriteEntity)			(int iValue);
-	void		(*pfnCVarRegister)			(cvar_t *pCvar);
+	//void		(*pfnCVarRegister)			(cvar_t *pCvar); UNIMPLEMENTED FOR BUILD 738
 	float		(*pfnCVarGetFloat)			(const char *szVarName);
 	const char*	(*pfnCVarGetString)			(const char *szVarName);
 	void		(*pfnCVarSetFloat)			(const char *szVarName, float flValue);
@@ -170,7 +168,7 @@ typedef struct enginefuncs_s
 	unsigned long (*pfnFunctionFromName)	( const char *pName );
 	const char *(*pfnNameForFunction)		( unsigned long function );
 	void		(*pfnClientPrintf)			( edict_t* pEdict, PRINT_TYPE ptype, const char *szMsg ); // JOHN: engine callbacks so game DLL can print messages to individual clients
-	void		(*pfnServerPrint)			( const char *szMsg );
+	//void		(*pfnServerPrint)			( const char *szMsg ); UNIMPLEMENTED FOR BUILD 738
 	const char *(*pfnCmd_Args)				( void );		// these 3 added 
 	const char *(*pfnCmd_Argv)				( int argc );	// so game DLL can easily 
 	int			(*pfnCmd_Argc)				( void );		// access client 'cmd' strings
@@ -198,13 +196,15 @@ typedef struct enginefuncs_s
 	char*		(*pfnGetInfoKeyBuffer)		(edict_t *e);	// passing in NULL gets the serverinfo
 	char*		(*pfnInfoKeyValue)			(char *infobuffer, char *key);
 	void		(*pfnSetKeyValue)			(char *infobuffer, char *key, char *value);
-	void		(*pfnSetClientKeyValue)		(int clientIndex, char *infobuffer, char *key, char *value);
+	//void		(*pfnSetClientKeyValue)		(int clientIndex, char *infobuffer, char *key, char *value);  UNIMPLEMENTED FOR BUILD 738
 	int			(*pfnIsMapValid)			(char *filename);
-	void		(*pfnStaticDecal)			( const float *origin, int decalIndex, int entityIndex, int modelIndex );
-	int			(*pfnPrecacheGeneric)		(char* s);
-	int			(*pfnGetPlayerUserId)		(edict_t *e ); // returns the server assigned userid for this player.  useful for logging frags, etc.  returns -1 if the edict couldn't be found in the list of clients
-	void		(*pfnBuildSoundMsg)			(edict_t *entity, int channel, const char *sample, /*int*/float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, const float *pOrigin, edict_t *ed);
-	int			(*pfnIsDedicatedServer)		(void);// is this a dedicated server?
+	//UNIMPLEMENTED FOR BUILD 738
+	//void		(*pfnStaticDecal)			( const float *origin, int decalIndex, int entityIndex, int modelIndex ); 
+	//int			(*pfnPrecacheGeneric)		(char* s);
+	//int			(*pfnGetPlayerUserId)		(edict_t *e ); // returns the server assigned userid for this player.  useful for logging frags, etc.  returns -1 if the edict couldn't be found in the list of clients
+	//void		(*pfnBuildSoundMsg)			(edict_t *entity, int channel, const char *sample, /*int*/float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, const float *pOrigin, edict_t *ed);
+	//int			(*pfnIsDedicatedServer)		(void);// is this a dedicated server?
+	//UNIMPLEMENTED FOR BUILD 738
 } enginefuncs_t;
 // be sure to bump INTERFACE_VERSION if you add a new function
 
@@ -319,7 +319,7 @@ typedef struct
 
 typedef struct 
 {
-	void			(*pfnGameInit)			( void );				// Initialize the game (one-time call from Host_Init() )
+	//void			(*pfnGameInit)			( void );				// Initialize the game (one-time call from Host_Init() )
 	int				(*pfnSpawn)				( edict_t *pent );
 	void			(*pfnThink)				( edict_t *pent );
 	void			(*pfnUse)				( edict_t *pentUsed, edict_t *pentOther );
